@@ -2,19 +2,19 @@ public enum Opcao {
     PEDRA{
         @Override
         public boolean vence(Opcao opcAdversaria) {
-            return opcAdversaria == TESOURA ? true : false;
+            return opcAdversaria == TESOURA;
         }
     },
     PAPEL{
         @Override
         public boolean vence(Opcao opcAdversaria) {
-            return opcAdversaria == PEDRA ? true : false;
+            return opcAdversaria == PEDRA;
         }
     },
     TESOURA{
         @Override
         public boolean vence(Opcao opcAdversaria) {
-            return opcAdversaria == PAPEL ? true : false;
+            return opcAdversaria == PAPEL;
         }
     };
 
