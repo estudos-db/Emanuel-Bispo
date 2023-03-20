@@ -7,7 +7,7 @@ public class BubbleSort {
     public int[] geraVetor() {
         Random random = new Random();
         for (int i = 0; i < vetor.length; i++)
-            vetor[i] = random.nextInt(3);
+            vetor[i] = random.nextInt(100);
         return vetor;
     }
 
