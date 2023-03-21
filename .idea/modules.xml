@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/atividade8/atividade8.iml" filepath="$PROJECT_DIR$/atividade8/atividade8.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bubblesort/bubblesort.iml" filepath="$PROJECT_DIR$/bubblesort/bubblesort.iml" />
+      <module fileurl="file://$PROJECT_DIR$/emanuelbispo.iml" filepath="$PROJECT_DIR$/emanuelbispo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fibonacci/fibonacci.iml" filepath="$PROJECT_DIR$/fibonacci/fibonacci.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fibonacci-com-limite/fibonacci-com-limite.iml" filepath="$PROJECT_DIR$/fibonacci-com-limite/fibonacci-com-limite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jokenpo/jokenpo.iml" filepath="$PROJECT_DIR$/jokenpo/jokenpo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maior-menor-numero/maior-menor-numero.iml" filepath="$PROJECT_DIR$/maior-menor-numero/maior-menor-numero.iml" />
+      <module fileurl="file://$PROJECT_DIR$/matriz-soma-diagonal/matriz-soma-diagonal.iml" filepath="$PROJECT_DIR$/matriz-soma-diagonal/matriz-soma-diagonal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nota-media-aluno/nota-media-aluno.iml" filepath="$PROJECT_DIR$/nota-media-aluno/nota-media-aluno.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tabuada/tabuada.iml" filepath="$PROJECT_DIR$/tabuada/tabuada.iml" />
+      <module fileurl="file://$PROJECT_DIR$/unir-ordenar-vetor/unir-ordenar-vetor.iml" filepath="$PROJECT_DIR$/unir-ordenar-vetor/unir-ordenar-vetor.iml" />
+    </modules>
+  </component>
+</project>
