@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1e60171d-e2cb-4985-aa3d-554731e5bff5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/atividade8/atividade8.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bubblesort/bubblesort.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fibonacci-com-limite/fibonacci-com-limite.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fibonacci/fibonacci.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jokenpo/jokenpo.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maior-menor-numero/maior-menor-numero.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/matriz-soma-diagonal/matriz-soma-diagonal.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nota-media-aluno/nota-media-aluno.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabuada/tabuada.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/unir-ordenar-vetor/unir-ordenar-vetor.iml" beforeDir="false" />
-    </list>
+    <list default="true" id="1e60171d-e2cb-4985-aa3d-554731e5bff5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,12 +15,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Calculadora {
@@ -6,15 +7,29 @@ public class Calculadora {
 
     public String iniciar() {
 
-        System.out.println("Escolha a operação:\n+\n-\n/\n*");
+        System.out.println("Escolha a operação:\n+\n-\n/\n*\n^");
         String operacao = sc.nextLine();
 
-        System.out.println("Digite o primerio numero: ");
-        Integer numero1 = sc.nextInt();
+        Integer numero1 = 0;
+        Integer numero2 = 0;
+        Integer base = 0;
+        Integer expoente = 0;
 
-        System.out.println("Digite o segundo numero: \n");
-        Integer numero2 = sc.nextInt();
+        if(operacao.equals("^")){
+            System.out.println("Digite a base: \n");
+            base = sc.nextInt();
 
+            System.out.println("Digite o expoente: \n");
+            expoente = sc.nextInt();
+        }else {
+
+            System.out.println("Digite o primerio numero: ");
+            numero1 = sc.nextInt();
+
+            System.out.println("Digite o segundo numero: \n");
+            numero2 = sc.nextInt();
+
+        }
 
         String mensagemResultado = "Resultado da operação: ";
 
@@ -30,6 +45,9 @@ public class Calculadora {
 
             case "*":
                 return mensagemResultado + multiplicar(numero1, numero2);
+
+            case "^":
+                return mensagemResultado + potencia(base, expoente);
 
             default:
                 return "Ocorreu um erro na operação!";
@@ -51,6 +69,11 @@ public class Calculadora {
 
     public static int multiplicar(int numero1, int numero2) {
         return numero1 * numero2;
+    }
+
+    public static int potencia(int base, int expoente) {
+        if(expoente == 0) return 1;
+        return base * potencia(base, expoente - 1);
     }
 
 }

@@ -23,4 +23,10 @@ public class CalculadoraTest {
         assertEquals(20, Calculadora.multiplicar(4, 5));
     }
 
+    @Test
+    void deveRetornarAPotenciacao() {
+        assertEquals(16, Calculadora.potencia(4, 2));
+        assertEquals(125, Calculadora.potencia(5, 3));
+    }
+
 }
