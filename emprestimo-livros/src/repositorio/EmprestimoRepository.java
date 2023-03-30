@@ -5,7 +5,6 @@ import modelo.Emprestimo;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 public class EmprestimoRepository implements IEmprestimoRepository {
 
@@ -18,6 +17,22 @@ public class EmprestimoRepository implements IEmprestimoRepository {
     @Override
     public void addOne(Emprestimo emprestimo) {
         catalogoEmprestimos.add(emprestimo);
+    }
+
+    @Override
+    public void updateOne(String codigo, Emprestimo novoEmprestimo) {
+        Emprestimo emprestimoAtual = null;
+
+        for (int i = 0; i < catalogoEmprestimos.size(); i++) {
+            if (catalogoEmprestimos.get(i).getCodigo().equals(codigo)) {
+                emprestimoAtual = catalogoEmprestimos.get(i);
+                break;
+            }
+        }
+
+        if (emprestimoAtual == null) throw new RuntimeException("Codigo inválido");
+
+        Collections.replaceAll(catalogoEmprestimos, emprestimoAtual, novoEmprestimo);
     }
 
     @Override
@@ -37,12 +52,9 @@ public class EmprestimoRepository implements IEmprestimoRepository {
 
     @Override
     public void deleteOne(String codigo) {
-        Emprestimo emp =  catalogoEmprestimos.stream()
-                .filter(e -> e.getCodigo() == codigo)
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("Codigo inválido"));
-
-        catalogoEmprestimos.remove(emp);
+        boolean isSuccess = catalogoEmprestimos
+                .removeIf(e -> e.getCodigo() == codigo);
+        if(!isSuccess) throw new RuntimeException("Codigo inválido");
     }
 
     @Override

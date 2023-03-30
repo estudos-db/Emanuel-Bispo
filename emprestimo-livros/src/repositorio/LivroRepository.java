@@ -1,6 +1,5 @@
 package repositorio;
 
-import modelo.Emprestimo;
 import modelo.Livro;
 
 import java.util.Collections;
@@ -9,7 +8,7 @@ import java.util.Optional;
 
 public class LivroRepository implements Repository<Livro, String> {
 
-    private List<Livro> catalogoLivros;
+    private final List<Livro> catalogoLivros;
 
     public LivroRepository(List<Livro> catalogoLivro) {
         this.catalogoLivros = catalogoLivro;
@@ -18,6 +17,23 @@ public class LivroRepository implements Repository<Livro, String> {
     @Override
     public void addOne(Livro livro) {
         catalogoLivros.add(livro);
+    }
+
+    @Override
+    public void updateOne(String isbn, Livro novoLivro) {
+        Livro livroAtual = null;
+
+        for (Livro catalogoLivro : catalogoLivros) {
+            if (catalogoLivro.getIsbn().equals(isbn)) {
+                livroAtual = catalogoLivro;
+                break;
+            }
+        }
+
+        if (livroAtual == null) throw new RuntimeException("Isbn inválido");
+
+        Collections.replaceAll(catalogoLivros, livroAtual, novoLivro);
+
     }
 
     @Override
@@ -36,12 +52,8 @@ public class LivroRepository implements Repository<Livro, String> {
 
     @Override
     public void deleteOne(String isbn) {
-        Livro livro =  catalogoLivros.stream()
-                .filter(livr -> livr.getIsbn() == isbn)
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("Codigo inválido"));
-
-        catalogoLivros.remove(livro);
+        boolean isSuccess = catalogoLivros.removeIf(l -> l.getIsbn().equals(isbn));
+        if (!isSuccess) throw new RuntimeException("Isbn inválido");
     }
 
 }

@@ -1,24 +1,29 @@
 package servicos;
 
+import modelo.Emprestimo;
 import modelo.Livro;
 import repositorio.IEmprestimoRepository;
 import repositorio.LivroRepository;
+
+import java.util.Optional;
 
 public class LivroService {
 
     private LivroRepository livroRepository;
     private IEmprestimoRepository emprestimoRepository;
 
-    public LivroService(IEmprestimoRepository emprestimoRepository, LivroRepository livroRepository) {
+    public LivroService(LivroRepository livroRepository, IEmprestimoRepository emprestimoRepository) {
         this.emprestimoRepository = emprestimoRepository;
         this.livroRepository = livroRepository;
     }
 
-    public boolean isDisponivel(Livro livro) {
-        Livro livroEncontrado = livroRepository.getOne(livro.getIsbn())
+    public boolean isLivroDisponivel(String isbn) {
+        Livro livroEncontrado = livroRepository.getOne(isbn)
                 .orElseThrow(() -> new RuntimeException("Livro não existe no catalogo"));
 
-        return !emprestimoRepository.getByIsbnLivro(livro.getIsbn()).isPresent();
+        Optional<Emprestimo> emprestimo = emprestimoRepository.getByIsbnLivro(isbn);
+
+        return !(emprestimo.isPresent() && emprestimo.get().getData_devolucao() == null);
     }
 
 }
