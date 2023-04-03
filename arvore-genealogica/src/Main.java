@@ -1,21 +1,21 @@
 public class Main {
 
-    public static Pessoa mae() {
-        Pessoa mae = new Pessoa(
+    public static Mae mae() {
+        Mae mae = new Mae(
                 "Vila",
                 70,
-                new Pessoa("Pai da Vila", 94, null, null),
-                new Pessoa("Mae da vila", 94, null, null)
+                new Pai("Pai da Vila", 94, null, null),
+                new Mae("Mae da vila", 94, null, null)
         );
 
-        Pessoa pai = new Pessoa(
+        Pai pai = new Pai(
                 "Jose",
                 76,
-                new Pessoa("Pai do Jose", 104, null, null),
-                new Pessoa("Mae do Jose", 104, null, null)
+                new Pai("Pai do Jose", 104, null, null),
+                new Mae("Mae do Jose", 104, null, null)
         );
 
-        return new Pessoa(
+        return new Mae(
                 "Carla",
                 38,
                 pai,
@@ -24,22 +24,22 @@ public class Main {
 
     }
 
-    public static Pessoa pai() {
-        Pessoa mae = new Pessoa(
+    public static Pai pai() {
+        Mae mae = new Mae(
                 "Tereza",
                 69,
-                new Pessoa("Pai da Tereza", 98, null, null),
-                new Pessoa("Mae da Tereza", 92, null, null)
+                new Pai("Pai da Tereza", 98, null, null),
+                new Mae("Mae da Tereza", 92, null, null)
         );
 
-        Pessoa pai = new Pessoa(
+        Pai pai = new Pai(
                 "Jorel",
                 72,
-                new Pessoa("Pai do Jorel", 101, null, null),
-                new Pessoa("Mae do Jorel", 99, null, null)
+                new Pai("Pai do Jorel", 101, null, null),
+                new Mae("Mae do Jorel", 99, null, null)
         );
 
-        return new Pessoa(
+        return new Pai(
                 "Joao",
                 38,
                 pai,

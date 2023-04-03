@@ -2,10 +2,10 @@ public class Pessoa {
 
     private String nome;
     private int idade;
-    private Pessoa pai;
-    private Pessoa mae;
+    private Pai pai;
+    private Mae mae;
 
-    public Pessoa(String nome, int idade, Pessoa pai, Pessoa mae) {
+    public Pessoa(String nome, int idade, Pai pai, Mae mae) {
         this.nome = nome;
         this.idade = idade;
         this.pai = pai;
