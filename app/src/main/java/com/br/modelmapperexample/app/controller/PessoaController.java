@@ -27,7 +27,8 @@ public class PessoaController {
 
     @PostMapping
     public ResponseEntity<Pessoa> cadastrar(@RequestBody PessoaCadastro pessoa) {
-
+        //Dentro do método map vai dois parametros(classe que você quer converter, Tipo de classe na qual vai ser convertida)
+        //Note que ele quer converter a classe PessoaCadastro para a classe Pessoa
         Pessoa pessoadaMappeada = modelMapper.map(pessoa, Pessoa.class);
         pessoaRepository.save(pessoadaMappeada);
 
