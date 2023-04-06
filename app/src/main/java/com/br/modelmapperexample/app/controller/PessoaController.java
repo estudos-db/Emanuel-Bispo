@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping("/pessoa")
 public class PessoaController {
@@ -23,22 +26,25 @@ public class PessoaController {
     }
 
     @PostMapping
-    public ResponseEntity<PessoaResposta> cadastrar(@RequestBody PessoaCadastro pessoa) {
+    public ResponseEntity<Pessoa> cadastrar(@RequestBody PessoaCadastro pessoa) {
 
-        /*
-                
-        * */
         Pessoa pessoadaMappeada = modelMapper.map(pessoa, Pessoa.class);
         pessoaRepository.save(pessoadaMappeada);
-        PessoaResposta pessoaDto = modelMapper.map(pessoadaMappeada, PessoaResposta.class);
-        return ResponseEntity.ok(pessoaDto);
+
+        return ResponseEntity.ok(pessoadaMappeada);
+
     }
 
-    @GetMapping("/{pessoaId}")
-    public ResponseEntity<PessoaResposta> lisar(@PathVariable Long pessoaId) {
-        Pessoa pessoa = pessoaRepository.findById(pessoaId).get();
-        PessoaResposta pessoaMap = modelMapper.map(pessoa, PessoaResposta.class);
-        return ResponseEntity.ok(pessoaMap);
+    @GetMapping
+    public ResponseEntity<List<PessoaResposta>> converter() {
+        List<Pessoa> pessoas = pessoaRepository.findAll();
+
+        List<PessoaResposta> pessoasMap = pessoas.stream()
+                .map(e -> modelMapper.map(e, PessoaResposta.class))
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(pessoasMap);
     }
+
 
 }

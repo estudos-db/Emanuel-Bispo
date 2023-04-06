@@ -8,6 +8,5 @@ import lombok.Setter;
 @Setter
 public class PessoaResposta {
     private String nome;
-    private Integer idade;
     private Endereco endereco;
 }
