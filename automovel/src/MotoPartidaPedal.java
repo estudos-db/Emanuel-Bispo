@@ -1,6 +1,6 @@
 public class MotoPartidaPedal extends Moto {
-    public MotoPartidaPedal(int numeroRodas, int velocidadeMax) {
-        super(numeroRodas, velocidadeMax);
+    public MotoPartidaPedal(int velocidadeMax) {
+        super(velocidadeMax);
     }
 
     @Override

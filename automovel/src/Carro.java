@@ -1,7 +1,7 @@
 public class Carro extends Automovel{
 
-    public Carro(int numeroRodas, int velocidadeMax) {
-        super(numeroRodas, velocidadeMax);
+    public Carro(int velocidadeMax) {
+        super(4, velocidadeMax);
     }
 
 }

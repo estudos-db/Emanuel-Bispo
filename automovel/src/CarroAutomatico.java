@@ -1,6 +1,6 @@
 public class CarroAutomatico extends Carro{
-    public CarroAutomatico(int numeroRodas, int velocidadeMax) {
-        super(numeroRodas, velocidadeMax);
+    public CarroAutomatico(int velocidadeMax) {
+        super(velocidadeMax);
     }
 
     @Override

@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CarroAutomaticoTest {
 
-    private CarroAutomatico carroAutomatico = new CarroAutomatico(4, 220);
+    private CarroAutomatico carroAutomatico = new CarroAutomatico(220);
 
     @Test
     void ligarDeveLancarExcecaoAoTentarSemPressionarOFreio() {

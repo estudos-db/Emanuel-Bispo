@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MotoPartidaPedalTest {
 
-    private MotoPartidaPedal motoPartidaPedal = new MotoPartidaPedal(2, 220);
+    private MotoPartidaPedal motoPartidaPedal = new MotoPartidaPedal(220);
 
     @Test
     void ligarDeveLancarExcecaoAoTentarSemPressionarOAcelerador() {
