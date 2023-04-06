@@ -17,12 +17,12 @@ import java.util.stream.Collectors;
 public class PessoaController {
 
     private final PessoaRepository pessoaRepository;
-    @Autowired
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public PessoaController(PessoaRepository pessoaRepository) {
+    public PessoaController(PessoaRepository pessoaRepository, ModelMapper modelMapper) {
         this.pessoaRepository = pessoaRepository;
+        this.modelMapper = modelMapper;
     }
 
     @PostMapping
