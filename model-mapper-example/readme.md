@@ -7,7 +7,9 @@
 - Maven ou Gradle
 # Configurando o ModelMapper no projeto
 <h4>Se você for utilizar o ModelMapper, adicione umas dessas dependências:</h4>
+
 ## Maven
+
 ````
 <dependency>
     <groupId>org.modelmapper</groupId>
@@ -16,6 +18,7 @@
 </dependency>
 ````
 ## Gradle
+
 ````
  implementation ("org.modelmapper:modelmapper:2.1.1")
 ````
@@ -34,6 +37,7 @@ public class ModelMapperConfig {
 }
 ````
 <h4>Em seguida, não esqueça que na hora que você quiser instanciar o ModelMapper, adicione dentro de um construtor:</h4>
+
 ````
 @RestController
 @RequestMapping("/modelmapper")
