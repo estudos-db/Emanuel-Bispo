@@ -38,10 +38,11 @@ public class PessoaController {
 
     @GetMapping
     public ResponseEntity<List<PessoaResposta>> converter() {
+        //Exemplo de mapeamento de listas/coleções
         List<Pessoa> pessoas = pessoaRepository.findAll();
 
         List<PessoaResposta> pessoasMap = pessoas.stream()
-                .map(e -> modelMapper.map(e, PessoaResposta.class))
+                .map(pessoaEntity -> modelMapper.map(pessoaEntity, PessoaResposta.class))
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(pessoasMap);
