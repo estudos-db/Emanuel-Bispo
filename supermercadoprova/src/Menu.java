@@ -1,3 +1,4 @@
+import factory.EstoqueFactory;
 import model.Estoque;
 import service.PedidoService;
 
@@ -12,7 +13,7 @@ public class Menu {
 
     public Menu() {
         scanner = new Scanner(System.in);
-        estoque = new Estoque(new ArrayList<>());
+        estoque = new Estoque(EstoqueFactory.get());
         pedidoService = new PedidoService(estoque);
     }
 

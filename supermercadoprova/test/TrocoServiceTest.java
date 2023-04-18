@@ -31,7 +31,7 @@ public class TrocoServiceTest {
                              BigDecimal.valueOf(0.05)
                 ),
 
-                TrocoService.defineMenorQuantidadeDeNotas(BigDecimal.valueOf(57.9))
+                TrocoService.defineMenorQuantidadeDeNotas(BigDecimal.valueOf(57.93))
         );
     }
 

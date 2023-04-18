@@ -37,16 +37,22 @@ public class Estoque {
         listaDeProdutos.stream()
                 .filter(produto -> produto.equals(nomeProduto))
                 .findFirst()
-                .map(produto -> produto.subtraiQuantidadeDoEstoque(quantidadeDaBaixa))
-                .orElseThrow(() -> new RuntimeException("Produto não encontrado!"));
+                .map(produto -> {
+                    listaDeProdutos.remove(produto);
+                    return produto.subtraiQuantidadeDoEstoque(quantidadeDaBaixa);
+                })
+                .orElseThrow(() -> new RuntimeException("Produto inválido ou sem estoque!"));
     }
 
     public void darBaixaPorId(int idProduto, int quantidadeDaBaixa) {
         listaDeProdutos.stream()
                 .filter(produto -> produto.getId() == idProduto)
                 .findFirst()
-                .map(produto -> produto.subtraiQuantidadeDoEstoque(quantidadeDaBaixa))
-                .orElseThrow(() -> new RuntimeException("Produto não encontrado!"));
+                .map(produto -> {
+                    listaDeProdutos.remove(produto);
+                    return produto.subtraiQuantidadeDoEstoque(quantidadeDaBaixa );
+                })
+                .orElseThrow(() -> new RuntimeException("Produto inválido ou sem estoque!"));
     }
 
     public int getQuantidadeProdutoNoEstoque(String nome) {

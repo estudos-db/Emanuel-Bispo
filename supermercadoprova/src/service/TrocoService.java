@@ -24,8 +24,9 @@ public class TrocoService {
         var contagemValorAtual = BigDecimal.ZERO;
 
         while (contagemValorAtual.compareTo(troco) < 0) {
+            var restante = troco.subtract(contagemValorAtual);
+            if(restante.compareTo(BigDecimal.valueOf(0.05)) < 0) break;
             for (BigDecimal nota : notas) {
-                var restante = troco.subtract(contagemValorAtual);
                 if(nota.compareTo(restante) <= 0 ) {
                     notasDoTroco.add(nota);
                     contagemValorAtual =  contagemValorAtual.add(nota);

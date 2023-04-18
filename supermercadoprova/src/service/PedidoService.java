@@ -107,6 +107,7 @@ public class PedidoService {
 
         System.out.println("Para troco: R$ " + troco + ", repassar: "+ repassarNotas);
         System.out.println("Pedido finalizado!\n");
+        pedido = new Pedido(new ArrayList<>());
     }
 
     private int escolheOpcao() {
@@ -116,7 +117,13 @@ public class PedidoService {
         System.out.println("3- Finalizar pedido");
         System.out.println("4- Sair");
 
-       return scanner.nextInt();
+        int escolha = scanner.nextInt();
+        if(escolha == 3 && pedido.getListaDeItens().size() == 0){
+            System.out.println("\nPedido vazio! Adicione itens a lista para poder continuar!\n");
+            return -1;
+        }
+
+       return escolha;
     }
 
 }
