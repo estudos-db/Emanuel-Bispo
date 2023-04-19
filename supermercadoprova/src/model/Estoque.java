@@ -38,8 +38,11 @@ public class Estoque {
                 .filter(produto -> produto.equals(nomeProduto))
                 .findFirst()
                 .map(produto -> {
-                    listaDeProdutos.remove(produto);
-                    return produto.subtraiQuantidadeDoEstoque(quantidadeDaBaixa);
+                    produto.subtraiQuantidadeDoEstoque(quantidadeDaBaixa);
+                    if(produto.getQuantidadeEmEstoque() == 0) {
+                        listaDeProdutos.remove(produto);
+                    }
+                    return true;
                 })
                 .orElseThrow(() -> new RuntimeException("Produto inválido ou sem estoque!"));
     }
@@ -49,8 +52,11 @@ public class Estoque {
                 .filter(produto -> produto.getId() == idProduto)
                 .findFirst()
                 .map(produto -> {
-                    listaDeProdutos.remove(produto);
-                    return produto.subtraiQuantidadeDoEstoque(quantidadeDaBaixa );
+                    produto.subtraiQuantidadeDoEstoque(quantidadeDaBaixa );
+                    if(produto.getQuantidadeEmEstoque() == 0){
+                        listaDeProdutos.remove(produto);
+                    }
+                    return true;
                 })
                 .orElseThrow(() -> new RuntimeException("Produto inválido ou sem estoque!"));
     }
@@ -73,8 +79,7 @@ public class Estoque {
         for (Produto produto: listaDeProdutos) {
             if (produto.equals(nome)) return listaDeProdutos.indexOf(produto);
         }
-
-        return -1;
+        throw new RuntimeException("Produto não localizado!");
     }
 
     public boolean temEstoque(String nome) {

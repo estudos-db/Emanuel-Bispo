@@ -16,7 +16,8 @@ public class TrocoService {
                 BigDecimal.valueOf(5), BigDecimal.valueOf(2),
                 BigDecimal.valueOf(1), BigDecimal.valueOf(0.5),
                 BigDecimal.valueOf(0.25), BigDecimal.valueOf(0.10),
-                BigDecimal.valueOf(0.05)
+                BigDecimal.valueOf(0.05),
+                BigDecimal.valueOf(0.01)
         );
 
         List<BigDecimal> notasDoTroco = new ArrayList<>();
@@ -25,7 +26,6 @@ public class TrocoService {
 
         while (contagemValorAtual.compareTo(troco) < 0) {
             var restante = troco.subtract(contagemValorAtual);
-            if(restante.compareTo(BigDecimal.valueOf(0.05)) < 0) break;
             for (BigDecimal nota : notas) {
                 if(nota.compareTo(restante) <= 0 ) {
                     notasDoTroco.add(nota);

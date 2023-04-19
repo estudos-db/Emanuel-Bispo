@@ -28,7 +28,10 @@ public class TrocoServiceTest {
                              BigDecimal.valueOf(0.5),
                              BigDecimal.valueOf(0.25),
                              BigDecimal.valueOf(0.1),
-                             BigDecimal.valueOf(0.05)
+                             BigDecimal.valueOf(0.05),
+                             BigDecimal.valueOf(0.01),
+                             BigDecimal.valueOf(0.01),
+                             BigDecimal.valueOf(0.01)
                 ),
 
                 TrocoService.defineMenorQuantidadeDeNotas(BigDecimal.valueOf(57.93))
