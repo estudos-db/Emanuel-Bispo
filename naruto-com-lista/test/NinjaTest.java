@@ -10,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class NinjaTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
     private NinjaDeTaijutsu ninjaDeTaijutsu;
 
     @BeforeEach

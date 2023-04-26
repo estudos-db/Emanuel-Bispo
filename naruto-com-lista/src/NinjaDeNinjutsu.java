@@ -13,7 +13,7 @@ public class NinjaDeNinjutsu extends Personagem implements Ninja{
     public boolean usarJutsu(String nome) {
         Jutsu jutsu = getJutsus().get(nome);
 
-        if(!AtaqueValidacao.getResultado(getChakra())){
+        if(!VerificaSePossuiChakra.getResultado(getChakra(), jutsu.getConsumoDeChakra())){
             System.out.print("Você não possui chakra suficiente para poder atacar!");
             return false;
         }
