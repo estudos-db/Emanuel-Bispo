@@ -1,5 +1,4 @@
 import java.util.Map;
-import java.util.Random;
 
 public class NinjaDeTaijutsu extends Personagem implements Ninja{
     public NinjaDeTaijutsu(String nome, Map<String, Jutsu> jutsus, int chakra, int vida) {
@@ -11,16 +10,18 @@ public class NinjaDeTaijutsu extends Personagem implements Ninja{
     }
 
     @Override
-    public Jutsu usarJutsu(String nome) {
+    public boolean usarJutsu(String nome) {
         Jutsu jutsu = getJutsus().get(nome);
-        if(getChakra() > 0){
-            super.descontarChakra(jutsu.getConsumoDeChakra());
-            System.out.print("Você usou suas habilidades de Taijutsu!");
-        }else {
+
+        if(!AtaqueValidacao.getResultado(getChakra())){
             System.out.print("Você não possui chakra suficiente para poder atacar!");
+            return false;
         }
 
-        return jutsu;
+        super.descontarChakra(jutsu.getConsumoDeChakra());
+        System.out.print("Você usou suas habilidades de Taijutsu!");
+
+        return true;
     }
 
     @Override

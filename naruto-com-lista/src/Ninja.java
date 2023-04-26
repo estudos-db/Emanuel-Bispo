@@ -1,4 +1,4 @@
 public interface Ninja {
-    Jutsu usarJutsu(String nome);
+    boolean usarJutsu(String nome);
     void desviar(Jutsu jutsuOponente);
 }
