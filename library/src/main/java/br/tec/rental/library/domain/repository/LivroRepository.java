@@ -15,6 +15,9 @@ public interface LivroRepository extends JpaRepository<Livro, Long> {
     @Query(value = "SELECT l FROM Aluguel a INNER JOIN a.livros l WHERE a.devolucao IS NULL")
     List<Livro> findAllUnavailableToRent();
 
+    @Query(value = "SELECT l FROM Livro l where l.id not in( select lv.id from Aluguel a join a.livros lv where a.devolucao is null )")
+    List<Livro> findAllAvailableToRent();
+
     @Query(value = "SELECT l.* FROM livro l INNER JOIN aluguel_livro al INNER JOIN aluguel a WHERE l.id = al.livro_id AND a.locatario_id = :id GROUP BY l.id",
             nativeQuery = true)
     List<Livro> findAllByLocatarioRental(@Param(value = "id") Long id);

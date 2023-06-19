@@ -56,12 +56,7 @@ public class LivroService {
     }
 
     public List<Livro> getAllAvailableToRent() {
-        List<Livro> livros = livroRepository.findAll();
-        List<Livro> allUnavailableToRent = livroRepository.findAllUnavailableToRent();
-
-        livros.removeAll(allUnavailableToRent);
-
-        return livros;
+        return livroRepository.findAllAvailableToRent();
     }
 
     public List<Livro> getAllUnavailableToRent() {
