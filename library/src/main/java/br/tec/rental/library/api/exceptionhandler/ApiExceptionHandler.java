@@ -36,11 +36,6 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(new ErrorResponse(ex.getMessage()), HttpStatus.CONFLICT);
     }
 
-    @ExceptionHandler(EmptyResultDataAccessException.class)
-    public ResponseEntity<ErrorResponse> handleEmptyResultException(EmptyResultDataAccessException ex) {
-        return new ResponseEntity<>(new ErrorResponse("Recurso não localizado!"), HttpStatus.NOT_FOUND);
-    }
-
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleResourceException(ResourceNotFoundException ex) {
         return new ResponseEntity<>(new ErrorResponse(ex.getMessage()), HttpStatus.NOT_FOUND);
