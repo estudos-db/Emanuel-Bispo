@@ -1,22 +1,26 @@
 package br.tec.rental.library.domain.service;
 
+import br.tec.rental.library.api.dto.library.OpenLibraryResponse;
 import br.tec.rental.library.api.dto.livro.LivroRequest;
 import br.tec.rental.library.api.exception.ConflictException;
 import br.tec.rental.library.api.exception.EntityNotFound;
 import br.tec.rental.library.api.exception.ResourceNotFoundException;
 import br.tec.rental.library.api.mapping.LivroMapping;
+import br.tec.rental.library.client.openlibrary.OpenLibraryClient;
 import br.tec.rental.library.domain.model.Aluguel;
 import br.tec.rental.library.domain.model.Autor;
 import br.tec.rental.library.domain.model.Livro;
 import br.tec.rental.library.domain.repository.AluguelRepository;
 import br.tec.rental.library.domain.repository.AutorRepository;
 import br.tec.rental.library.domain.repository.LivroRepository;
+import br.tec.rental.library.domain.service.utils.FormatadorData;
 import br.tec.rental.library.domain.service.validator.ValidaIDs;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -24,22 +28,28 @@ import java.util.List;
 @Service
 public class LivroService {
 
-    private LivroRepository livroRepository;
-    private AutorRepository autorRepository;
-    private AluguelRepository aluguelRepository;
-    private LivroMapping livroMapping;
-    private ValidaIDs validaAutoresID;
+    private final LivroRepository livroRepository;
+    private final AutorRepository autorRepository;
+    private final AluguelRepository aluguelRepository;
+    private final LivroMapping livroMapping;
+    private final ValidaIDs validaAutoresID;
+    private final OpenLibraryClient openLibraryClient;
+
+    private static final String FORMATADO_DATA_OPENLIBRARY_RESPONSE = "MMM d, yyy";
+    private static final String FORMATADO_DATA_API = "dd MMMM yyyy";
+
 
     @Autowired
     public LivroService(LivroRepository livroRepository, AluguelRepository aluguelRepository,
                         AutorRepository autorRepository, LivroMapping livroMapping,
-                        ValidaIDs validaAutoresID
+                        ValidaIDs validaAutoresID, OpenLibraryClient openLibraryClient
     ) {
         this.livroRepository = livroRepository;
         this.autorRepository = autorRepository;
         this.aluguelRepository = aluguelRepository;
         this.livroMapping = livroMapping;
         this.validaAutoresID = validaAutoresID;
+        this.openLibraryClient = openLibraryClient;
     }
 
     public List<Livro> getAll() {
@@ -65,14 +75,17 @@ public class LivroService {
 
     @Transactional
     public Livro save(LivroRequest novoLivro) {
-        List<Autor> autors = checkIn(novoLivro.getAutor());
+        OpenLibraryResponse openLibraryResponse = openLibraryClient.buscaLivroPorIsbn(novoLivro.getIsbn());
 
-        Livro livroSalvo = livroRepository
-                .save(livroMapping.toEntity(novoLivro));
+        Date dataPublicacaoFormatada = FormatadorData
+                .execute(FORMATADO_DATA_OPENLIBRARY_RESPONSE, FORMATADO_DATA_API, openLibraryResponse.getData_publicacao());
 
-        livroSalvo.setAutor(new HashSet<>(autors));
+        openLibraryResponse.setData_publicacao(null);
 
-        return livroSalvo;
+        Livro livro = livroMapping.toEntity(openLibraryResponse);
+        livro.setData_publicacao(dataPublicacaoFormatada);
+
+        return livroRepository.save(livro);
     }
 
     @Transactional

@@ -16,5 +16,5 @@ public class AluguelRequest {
     private Long locatarioID;
     @NotEmpty(message = "{arrayid.notempty}")
     private List<Long> livrosID;
-    private LocalDate prevista_devolucao = LocalDate.now().plusDays(2L);
+    private LocalDate prevista_devolucao;
 }

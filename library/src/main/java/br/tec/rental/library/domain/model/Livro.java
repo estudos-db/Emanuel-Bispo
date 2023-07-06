@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -17,7 +17,7 @@ public class Livro {
     private Long id;
     private String titulo;
     private String isbn;
-    private LocalDate data_publicacao;
+    private Date data_publicacao;
     @ManyToMany
     @JoinTable(name = "livro_autor")
     private Set<Autor> autor;

@@ -1,6 +1,6 @@
 package br.tec.rental.library.api.mapping;
 
-import br.tec.rental.library.api.dto.livro.LivroRequest;
+import br.tec.rental.library.api.dto.library.OpenLibraryResponse;
 import br.tec.rental.library.api.dto.livro.LivroResponse;
 import br.tec.rental.library.domain.model.Livro;
 import org.modelmapper.ModelMapper;
@@ -16,8 +16,8 @@ public class LivroMapping {
     @Autowired
     private ModelMapper modelMapper;
 
-    public Livro toEntity(LivroRequest livroRequest) {
-        return modelMapper.map(livroRequest, Livro.class);
+    public Livro toEntity(OpenLibraryResponse livroOpenLibraryResponse) {
+        return modelMapper.map(livroOpenLibraryResponse, Livro.class);
     }
 
     public LivroResponse toResponseModel(Livro livro) {

@@ -23,12 +23,18 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation ("org.modelmapper:modelmapper:2.1.1")
 	implementation ("org.springframework.boot:spring-boot-starter-validation")
-	implementation ("org.springframework.cloud:spring-cloud-dependencies:Hoxton.RELEASE")
-	implementation ("org.springframework.cloud:spring-cloud-starter-openfeign:2.2.5.RELEASE")
+	implementation ("org.springframework.cloud:spring-cloud-starter-openfeign")
+
 	runtimeOnly("com.h2database:h2")
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+dependencyManagement {
+	imports {
+		mavenBom("org.springframework.cloud:spring-cloud-dependencies:2021.0.7")
+	}
 }
 
 tasks.withType<Test> {
